@@ -1,0 +1,11 @@
+if __name__ == '__main__':
+    symObj = Sym()
+    symObj.add("a")
+    symObj.add("a")
+    symObj.add("a")
+    symObj.add("a")
+    symObj.add("b")
+    symObj.add("b")
+    symObj.add("c")
+    print(symObj.mid())
+    symObj.div()
