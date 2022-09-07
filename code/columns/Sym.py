@@ -1,4 +1,5 @@
-from code.util.Util import calculateLogProbablity
+from code.util.Util import calculateLogProbability
+
 
 class Sym:
     """
@@ -39,5 +40,5 @@ class Sym:
         print("Going to calculate Entropy for the ItemList")
         entropy = 0
         for item, frequency in self.itemList.items():
-            entropy -= calculateLogProbablity(frequency, self.countOfItems)
+            entropy -= calculateLogProbability(frequency, self.countOfItems)
         print("Entropy =", entropy)

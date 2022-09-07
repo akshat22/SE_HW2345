@@ -1,3 +1,13 @@
+from code import cli, config
+from code.columns.Sym import Sym
+
+
+cli_object = cli.Cli()
+the = cli_object
+config.settings["nums"] = cli_object.the['nums']
+print(cli_object.the)
+
+
 if __name__ == '__main__':
     symObj = Sym()
     symObj.add("a")
