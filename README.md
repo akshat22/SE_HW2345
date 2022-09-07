@@ -16,7 +16,7 @@ Python code for creating summaries of input CSV file by translating a lua code t
 
 1. [LUA](#LUA)
 2. [Goal](#Goal)
-3. [Getting started](#Getting started)
+3. [Getting started](#Getting-started)
 4. [File and function mapping](#file-and-function-mapping)
 5. [License](#license)
 6. [Contributors](#contributors)
