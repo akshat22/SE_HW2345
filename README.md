@@ -1,10 +1,9 @@
-![Intro page](./Images/Lua-vs-Python.jpg)
+
 
 # Summary creation tool
 
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
-
 <!-- [![Build](https://github.com/akshat22/SE_HW2345/actions/workflows/python-app.yml/badge.svg)](https://github.com/akshat22/SE_HW2345/actions/workflows/python-app.yml) -->
 
 [![GitHub contributors](https://img.shields.io/github/contributors/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345/graphs/contributors)
@@ -16,6 +15,8 @@ alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a
 [//]: # (![Repo size]&#40;https://img.shields.io/github/repo-size/jayrajmulani/group2-se-homeworks&#41;)
 
 [//]: # ([![Contributors]&#40;https://img.shields.io/github/contributors/jayrajmulani/group2-se-homeworks.svg&#41;]&#40;https://github.com/jayrajmulani/group2-se-hw1/graphs/contributors&#41; )
+
+![Intro page](./Images/Lua-vs-Python.jpg)
 
 Python code for creating summaries of input CSV file by translating a lua code to python.
 
