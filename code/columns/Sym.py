@@ -4,10 +4,10 @@ from code.util.Util import calculateLogProbability
 class Sym:
     """
     Default constructor that initialises:
-    (a) countOfItems: To keep track of count of items inserted
-    (b) columnName: current Sym Column Name
-    (c) columnPosition: current Sym Column Position in the input dataset
-    (d) itemList: Dictionary to keep track of items inserted & its count
+    (a) countOfItems(n): To keep track of count of items inserted
+    (b) columnName(s): current Sym Column Name
+    (c) columnPosition(c): current Sym Column Position in the input dataset
+    (d) itemList(has): Dictionary to keep track of items inserted & its count
     """
 
     def __init__(self, colName='', colPos=0):
