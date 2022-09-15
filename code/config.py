@@ -1,1 +1,1 @@
-settings = {"nums": 1000}
+the = {"nums": 512}

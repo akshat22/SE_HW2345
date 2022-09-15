@@ -4,7 +4,7 @@ from code.columns.Sym import Sym
 
 cli_object = cli.Cli()
 the = cli_object
-config.settings["nums"] = cli_object.the['nums']
+config.the["nums"] = cli_object.the['nums']
 print(cli_object.the)
 
 

@@ -46,7 +46,7 @@ class Num:
         self.countOfNums += 1
         self.lowestSeen = min(self.lowestSeen, num)
         self.highestSeen = max(self.highestSeen, num)
-        if len(self.numList) < settings["nums"]:
+        if len(self.numList) < the["nums"]:
             self.numList[num] = numCount + 1
         else:
             pos = random.randint(0, len(self.numList)-1)
