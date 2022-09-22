@@ -2,13 +2,11 @@ import re
 
 from code.util.Util import per
 from code.config import *
-import sys
 import random
 import math
-import statistics
-
 
 class Num:
+
     """
     Default constructor that initialises:
     (a) countOfItems(n): To keep track of count of items inserted
@@ -33,7 +31,7 @@ class Num:
 
     # Function to sort the numList
     def nums(self):
-        print("\n Going to sort the numList \n")
+        # print("\n Going to sort the numList \n")
         if not self.isSorted:
             self.numList.sort()
             self.isSorted = True
@@ -41,7 +39,7 @@ class Num:
 
     # Adds the passed num into numList
     def add(self, num):
-        print("\n Going To add num:", num, "to the list of nums. \n")
+        # print("\n Going To add num:", num, "to the list of nums. \n")
         numCount = self.numList.get(num, 0)
         self.countOfNums += 1
         self.lowestSeen = min(self.lowestSeen, num)
@@ -51,17 +49,17 @@ class Num:
         else:
             pos = random.randint(0, len(self.numList)-1)
             self.numList[pos] = num
-
         self.isSorted = False
         # print("Modified Num List:", self.numList, "with total nums =", self.countOfNums)
 
     # Calculate diversity (standard deviation for Nums, entropy for Sym)
     def div(self):
-        print("\n Calculating the Standard Deviation:\n")
+        # print("\n Calculating the Standard Deviation:\n")
         a = self.nums()
-        return (per(a, .9) - per(a, .1)) / 2.58
+        print("Div in nums:", (per(a, 0.9) - per(a, 0.1)) / 2.58)
+        return (per(a, 0.9) - per(a, 0.1)) / 2.58
 
     # Calculating central tendency (median for Nums, mode for Sym)
     def mid(self):
-        print("\n Calculating the central tendency:\n")
-        return per(self.nums(), .5)
+        # print("\n Calculating the central tendency:\n")
+        return per(self.nums(), 0.5)

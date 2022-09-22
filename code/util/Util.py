@@ -1,7 +1,6 @@
 import math
 import sys
 
-
 def calculateLogProbability(itemFrequency, totalCount):
     probability = (itemFrequency / totalCount)
     return probability * math.log2(probability)
@@ -9,27 +8,25 @@ def calculateLogProbability(itemFrequency, totalCount):
 
 # Return the ‘p‘−th thing from the sorted list ‘t‘
 def per(t, p):
-    p = math.floor(((p | .5) * len(t) + .5))
+    p = math.floor(((p | 0.5) * len(t) + 0.5))
     return t[max(1, min(len(t), p))]
 
 
-def coerce(self, s):
-    def fun(s1):
-        if s1 == "true":
+def coerce(value):
+    def fun(valueToParse):
+        if valueToParse == "true":
             return True
-        if s1 == "false":
+        if valueToParse == "false":
             return False
-        return s1
-
+        return valueToParse
     try:
-        return int(s)
+        return int(value)
     except:
-        return fun(s)
+        return fun(value)
 
-
-def cli(self, t):
-    for slot in t:
-        v = t[slot]
+def cli(dictionary):
+    for slot in dictionary:
+        v = dictionary[slot]
         v = str(v)
         n = 0
         for x in sys.argv:
@@ -39,16 +36,16 @@ def cli(self, t):
             if x == "-" + slot[0] or x == "--" + slot:
                 if v == "False":
                     v = "true"
-                    t[slot] = self.coerce(v)
+                    dictionary[slot] = self.coerce(v)
                     continue
                 if v == "True":
                     v = "false"
-                    t[slot] = self.coerce(v)
+                    dictionary[slot] = self.coerce(v)
                     continue
                 else:
                     v = sys.argv[n + 1]
-                t[slot] = self.coerce(v)
+            dictionary[slot] = self.coerce(v)
             n += 1
-    if t["help"]:
+    if dictionary["help"]:
         exit(self.help)
-    return t
+    return dictionary
