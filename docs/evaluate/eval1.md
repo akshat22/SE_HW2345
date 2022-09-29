@@ -3,7 +3,7 @@
 | Evaluated By | Madiha MAnsoori |
 | ID |  |
 | Unity ID | mmansoo |
-| Team | 9 |
+| Team | 8 |
 | Project Link | [Group 8 Repo](https://github.com/Aoishi28/CSC510_Group8_HW2) |
 
 ******
