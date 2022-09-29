@@ -5,13 +5,6 @@ def calculateLogProbability(itemFrequency, totalCount):
     probability = (itemFrequency / totalCount)
     return probability * math.log2(probability)
 
-
-# Return the ‘p‘−th thing from the sorted list ‘t‘
-def per(t, p):
-    p = math.floor(((p | 0.5) * len(t) + 0.5))
-    return t[max(1, min(len(t), p))]
-
-
 def coerce(value):
     def fun(valueToParse):
         if valueToParse == "true":
@@ -49,3 +42,11 @@ def cli(dictionary):
     if dictionary["help"]:
         exit(self.help)
     return dictionary
+
+def copy(t, u):
+    pass
+
+# Return the ‘p‘−th thing from the sorted list ‘t‘
+def per(t, p):
+    p = math.floor(((p | 0.5) * len(t) + 0.5))
+    return t[max(1, min(len(t), p))]
