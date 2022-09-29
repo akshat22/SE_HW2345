@@ -1,6 +1,6 @@
 |Type| Detail|
 |--------|-------|
-| Evaluated By | Madiha MAnsoori |
+| Evaluated By | Madiha Mansoori |
 | ID |  |
 | Unity ID | mmansoo |
 | Team | 8 |
