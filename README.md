@@ -1,18 +1,9 @@
-
-
-# Summary creation tool
+# Summary Creation Tool
 
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
 [![GitHub contributors](https://img.shields.io/github/contributors/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345/graphs/contributors)
 
-[//]: # ([![License]&#40;https://img.shields.io/github/license/jayrajmulani/group2-se-homeworks&#41;]&#40;https://github.com/jayrajmulani/group2-se-homeworks/blob/main/LICENSE&#41;)
-
-[//]: # ([![Python 3.8]&#40;https://img.shields.io/badge/python-3.8-blue.svg&#41;]&#40;https://www.python.org/downloads/release/python-3100/&#41;)
-
-[//]: # (![Repo size]&#40;https://img.shields.io/github/repo-size/jayrajmulani/group2-se-homeworks&#41;)
-
-[//]: # ([![Contributors]&#40;https://img.shields.io/github/contributors/jayrajmulani/group2-se-homeworks.svg&#41;]&#40;https://github.com/jayrajmulani/group2-se-hw1/graphs/contributors&#41; )
 
 ![Intro page](./Images/Lua-vs-Python.jpg)
 
