@@ -1,14 +1,11 @@
 import math
 import sys
 from contextlib import closing
+from pathlib import Path
+
 import requests
 import codecs
 import csv
-
-
-def calculateLogProbability(itemFrequency, totalCount):
-    probability = (itemFrequency / totalCount)
-    return probability * math.log2(probability)
 
 
 def coerce(value):
@@ -52,6 +49,20 @@ def csv_fun(url):
                 row[temp] = temp1
             row_list1.append(row)
     return row_list1
+
+
+# Call ‘fun‘ on each row. Row cells are divided in ‘the.seperator‘
+def csv_fun2(fileName, fun, n):
+    sep = ','
+    src = open(fileName)
+    count = 0
+    for line in src:
+        t = []
+        for s1 in line.rstrip().split(sep):
+            t.append(coerce(s1))
+        count = count + 1
+        if n is False or (n is True and count <= 10):
+            fun(t)
 
 
 # Maths

@@ -1,6 +1,5 @@
 from code.util.Util import per
 from code import Cli as c
-from code.config import *
 import random
 import math
 
@@ -15,7 +14,7 @@ class Num:
     (e) lowestSeen(lo): The lowest seen number in the dictionary
     (f) highestSeen(hi): The highest seen number in the dictionary
     (g) isSorted: Is the data sorted or not
-    (h) w : Not sure Yet
+    (h) w : 1 or -1
     """
 
     def __init__(self, colName='', colPos=0):

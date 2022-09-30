@@ -13,7 +13,7 @@ def runs(testName):
         old[t] = the[t]
     try:
         status = eg[testName]()
-        if status == True:
+        if status:
             message = "PASS"
         elif status is None:
             message = "CRASH"
@@ -73,7 +73,7 @@ def sym():
     symDictionary = {"mid": mode, "div": entropy}
     print("\nSym Operation Results", symDictionary)
     # oo()
-    return (mode == "a") and (1.37 <= entropy and entropy <= 1.38)
+    return (mode == "a") and (1.37 <= entropy <= 1.38)
 
 
 def num():
@@ -84,15 +84,15 @@ def num():
     div = numObject.div()
     numDictionary = {'mid': mid, 'div': div}
     print("\nNum Operation Results", numDictionary)
-    return (50 <= mid and mid <= 52) and (30.5 < div and div < 32)
+    return (50 <= mid <= 52) and (30.5 < div < 32)
 
 
-def bignum():
-    bignum = Num()
+def bigNum():
+    bigNumObject = Num()
     the['nums'] = 32
     for i in range(1000):
-        bignum.add(i + 1)
-    return len(num._has) == 32
+        bigNumObject.add(i + 1)
+    return len(bigNumObject.numList) == 32
 
 
 eg["BAD"] = BAD
@@ -100,5 +100,5 @@ eg["LIST"] = LIST
 eg["LS"] = LS
 eg["sym"] = sym
 eg["num"] = num
-eg["bignum"] = bignum
+eg["bignum"] = bigNum
 eg["ALL"] = ALL
