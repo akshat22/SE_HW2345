@@ -23,6 +23,7 @@ help = " \n\
 
 the = {}
 
+
 class Cli:
 
     def __init__(self):
@@ -58,5 +59,3 @@ class Cli:
         if dictionary["help"]:
             exit(help)
         return dictionary
-
-

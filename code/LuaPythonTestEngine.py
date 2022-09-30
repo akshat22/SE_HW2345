@@ -13,7 +13,7 @@ def runs(testName):
         old[t] = the[t]
     try:
         status = eg[testName]()
-        if status==True:
+        if status == True:
             message = "PASS"
         elif status is None:
             message = "CRASH"
@@ -50,6 +50,7 @@ def LS():
         print("\t" + k)
     return True
 
+
 def ALL():
     failingTestCaseCount = 0
     testCasesList = LIST()
@@ -59,6 +60,7 @@ def ALL():
                 failingTestCaseCount = failingTestCaseCount + 1
     # print('Total Testcases Failing after executing all testcase:', failingTestCaseCount)
     return True
+
 
 def sym():
     symbol = Sym()
@@ -92,9 +94,10 @@ def bignum():
         bignum.add(i + 1)
     return len(num._has) == 32
 
-eg["BAD"]=BAD
-eg["LIST"]=LIST
-eg["LS"]=LS
+
+eg["BAD"] = BAD
+eg["LIST"] = LIST
+eg["LS"] = LS
 eg["sym"] = sym
 eg["num"] = num
 eg["bignum"] = bignum

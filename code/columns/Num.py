@@ -1,18 +1,17 @@
-import re
-
 from code.util.Util import per
+from code import Cli as c
 from code.config import *
 import random
 import math
 
-class Num:
 
+class Num:
     """
     Default constructor that initialises:
-    (a) countOfItems(n): To keep track of count of items inserted
+    (a) countOfNums(n): To keep track of count of items inserted
     (b) columnName(s): current Sym Column Name
     (c) columnPosition(c): current Sym Column Position in the input dataset
-    (d) numList(has): Dictionary to keep track of nums inserted & its count
+    (d) numList(_has): Dictionary to keep track of nums inserted & its count
     (e) lowestSeen(lo): The lowest seen number in the dictionary
     (f) highestSeen(hi): The highest seen number in the dictionary
     (g) isSorted: Is the data sorted or not
@@ -27,7 +26,10 @@ class Num:
         self.lowestSeen = math.inf
         self.highestSeen = -math.inf
         self.isSorted = True  # no updates since last sort of data
-        self.w = -1 if re.search('-$', self.columnName) else 1
+        if colName[-1] == '-':
+            self.w = -1
+        else:
+            self.w = 1
 
     # Function to sort the numList
     def nums(self):
@@ -40,16 +42,19 @@ class Num:
     # Adds the passed num into numList
     def add(self, num):
         # print("\n Going To add num:", num, "to the list of nums. \n")
-        numCount = self.numList.get(num, 0)
-        self.countOfNums += 1
-        self.lowestSeen = min(self.lowestSeen, num)
-        self.highestSeen = max(self.highestSeen, num)
-        if len(self.numList) < the["nums"]:
-            self.numList[num] = numCount + 1
-        else:
-            pos = random.randint(0, len(self.numList)-1)
-            self.numList[pos] = num
-        self.isSorted = False
+        num = float(num)
+        if num != "?":
+            # numCount = self.numList.get(num, 0)
+            self.countOfNums += 1
+            self.lowestSeen = min(self.lowestSeen, num)
+            self.highestSeen = max(self.highestSeen, num)
+            if len(self.numList) < c.the["nums"]:
+                pos = len(self.numList)
+                self.numList[pos] = num
+            elif random.random() < c.the["nums"] / self.countOfNums:
+                pos = random.randrange(len(self.numList))
+                self.numList[pos] = num
+            self.isSorted = False
         # print("Modified Num List:", self.numList, "with total nums =", self.countOfNums)
 
     # Calculate diversity (standard deviation for Nums, entropy for Sym)

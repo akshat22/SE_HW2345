@@ -18,9 +18,9 @@ class Cols:
                 col = Num(i, self.names[i])
                 self.all.append(col)
 
-                #Checking if the column needs to be skipped
+                # Checking if the column needs to be skipped
                 if not re.search(':$', self.names[i]):
-                    #Checking if the column is dependent or independent
+                    # Checking if the column is dependent or independent
                     if re.search('[!+-]', self.names[i]):
                         self.y.append(col)
                     else:
@@ -29,13 +29,13 @@ class Cols:
                 col = Sym(i, self.names[i])
                 self.all.append(col)
 
-                #Checking if the column needs to be skipped
+                # Checking if the column needs to be skipped
                 if not re.search(':$', self.names[i]):
-                    #Checking if the column is dependent or independent
+                    # Checking if the column is dependent or independent
                     if re.search('[!+-]', self.names[i]):
                         self.y.append(col)
                     else:
                         self.x.append(col)
-            
+
             if re.search('[!$]', self.names[i]):
                 self.klass = col
