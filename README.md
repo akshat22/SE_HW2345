@@ -2,8 +2,11 @@
 
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
-[![GitHub contributors](https://img.shields.io/github/contributors/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345/graphs/contributors)
-
+[![GitHub contributors](https://img.shields.io/https://github.com/akshat22/SE_HW2345](https://https://github.com/akshat22/SE_HW2345/graphs/contributors)
+[![Python application](https://https://github.com/akshat22/SE_HW2345/actions/workflows/python-app.yml/badge.svg?style=plastic?branch=main)](https://https://github.com/akshat22/SE_HW2345/actions/workflows/python-app.yml)
+![Code Coverage](https://https://github.com/akshat22/SE_HW2345/actions/workflows/Coverage.yml/badge.svg)
+![Codecov](https://codecov.io/https://github.com/akshat22/SE_HW2345/branch/main/graph/badge.svg)
+[![DOI](https://zenodo.org/badge/532051492.svg?style=plastic)](https://zenodo.org/badge/latestdoi/532051492)
 
 ![Intro page](./Images/Lua-vs-Python.jpg)
 
