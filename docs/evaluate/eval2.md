@@ -16,12 +16,12 @@
 |-----|---------|
 |Video1| N/A | 
 |Video2| N/A | 
-|Workload is spread over the whole team | Somewhat 2 ([Github contributor stats](https://github.com/Aoishi28/CSC510_Group8_HW2/graphs/contributors)) |
-|Number of commits| 50 commits in total |
-|Number of commits: by different people|3| Aoishi28 -> 15 ; amisha-w -> 13 ; kunalshah03 -> 9 ; swarnamalyamohan -> 7 ; ameyachavan26 -> 6 |
-|Issues reports: there are 1-2| N/A |
-|Issues are being closed| 1-2 |
-|DOI badge: exists| Yes ([DOI](https://zenodo.org/record/7069232#.YzYqEHbMK3A)) |
+|Workload is spread over the whole team | Somewhat; 3 ([Github contributor stats](https://github.com/Swarangigaurkar/Group30_Hw2_3_4_5/graphs/contributors)) |
+|Number of commits| 96 commits in total |
+|Number of commits: by different people|3 LeooHsiang -> 30 ; Swarangigaurkar -> 25 ; aaron278 -> 15 ; ksjavali -> 13 ; JohnDamilola -> 9 |
+|Issues reports: there are 1-2| 2 |
+|Issues are being closed| 2 |
+|DOI badge: exists| Yes ([DOI](https://zenodo.org/record/7113667#.Yzez8OzMKu4)) |
 |Docs: doco generated, format not ugly | N/A |
 |Docs: what: point descriptions of each class/function (in isolation) | N/A |
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z| N/A | 
@@ -33,8 +33,8 @@
 |Use of syntax checkers. | No -0 |
 |Use of code coverage | Yes (100% Coverage)-3 |
 |Other automated analysis tools| Yes -3|
-|Test cases exist| Yes-2 |
-|Test cases are routinely executed| Yes -2([Test Result](https://github.com/Aoishi28/CSC510_Group8_HW2/actions))|
+|Test cases exist| Yes-3 |
+|Test cases are routinely executed| Yes -3([Test Result](https://github.com/Swarangigaurkar/Group30_Hw2_3_4_5/actions))|
 |The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up| Yes-3 |
 |Issues are discussed before they are closed| N/A |
 |Chat channel: exists| No |
