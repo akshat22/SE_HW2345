@@ -2,7 +2,7 @@
 
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
-
+[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/badges.svg)](https://GitHub.com/Naereen/badges/graphs/contributors/)
 ![Intro page](./Images/Lua-vs-Python.jpg)
 
 Python code for creating summaries of input CSV file by translating a lua code to python.
