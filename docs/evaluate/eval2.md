@@ -18,7 +18,7 @@
 |Video2| N/A | 
 |Workload is spread over the whole team | Somewhat; 3 ([Github contributor stats](https://github.com/Swarangigaurkar/Group30_Hw2_3_4_5/graphs/contributors)) |
 |Number of commits| 96 commits in total |
-|Number of commits: by different people|3 LeooHsiang -> 30 ; Swarangigaurkar -> 25 ; aaron278 -> 15 ; ksjavali -> 13 ; JohnDamilola -> 9 |
+|Number of commits: by different people|3; LeooHsiang -> 30 ; Swarangigaurkar -> 25 ; aaron278 -> 15 ; ksjavali -> 13 ; JohnDamilola -> 9 |
 |Issues reports: there are 1-2| 2 |
 |Issues are being closed| 2 |
 |DOI badge: exists| Yes ([DOI](https://zenodo.org/record/7113667#.Yzez8OzMKu4)) |
