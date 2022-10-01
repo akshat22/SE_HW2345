@@ -12,7 +12,7 @@
 ### Rubric:
 
 
-|Notes|evidence|
+|Notes|evidence = 46|
 |-----|---------|
 |Video1| N/A | 
 |Video2| N/A | 
@@ -21,7 +21,7 @@
 |Number of commits: by different people|3; LeooHsiang -> 30 ; Swarangigaurkar -> 25 ; aaron278 -> 15 ; ksjavali -> 13 ; JohnDamilola -> 9 |
 |Issues reports: there are 1-2| 2 |
 |Issues are being closed| 2 |
-|DOI badge: exists| Yes ([DOI](https://zenodo.org/record/7113667#.Yzez8OzMKu4)) |
+|DOI badge: exists| 3 Yes ([DOI](https://zenodo.org/record/7113667#.Yzez8OzMKu4)) |
 |Docs: doco generated, format not ugly | N/A |
 |Docs: what: point descriptions of each class/function (in isolation) | N/A |
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z| N/A | 
