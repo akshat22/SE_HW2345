@@ -42,5 +42,5 @@
 |Evidence that the whole team is using the same tools: everyone can get to all tools and files| Yes-3 |
 |Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)| Yes -3|
 |Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)| Yes -3|
-|Evidence that the members of the team are working across multiple places in the code base| Yes-1 |
+|Evidence that the members of the team are working across multiple places in the code base| Yes-3 |
 |Short release cycles | Yes-3 |
