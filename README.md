@@ -2,7 +2,6 @@
 
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
-[![GitHub contributors](https://img.shields.io/https://github.com/akshat22/SE_HW2345](https://https://github.com/akshat22/SE_HW2345/graphs/contributors)
 
 ![Intro page](./Images/Lua-vs-Python.jpg)
 
