@@ -2,8 +2,7 @@
 
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
-<a href="https://https://github.com/akshat22/SE_HW2345/graphs/contributors/graphs/contributors" alt="Contributors">
-<img src="https://img.shields.io/github.com/akshat22/SE_HW2345/graphs/contributors?style=plastic"/> </a>
+[![GitHub contributors](https://img.shields.io/github/contributors/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345/graphs/contributors)
 <!-- ![Intro page](./Images/Lua-vs-Python.jpg) -->
 
 Python code for creating summaries of input CSV file by translating a lua code to python.
@@ -79,14 +78,10 @@ The Lua classes and corresponding python implementation scripts are listed below
 
 ## License
 
-[//]: # (This project is licensed under [MIT]&#40;https://mit-license.org/&#41;.)
-
-[//]: # (Further details regarding the license can be found [here]&#40;https://github.com/jayrajmulani/group2-se-homeworks/blob/main/LICENSE&#41;.)
+This project is licensed under [MIT license](LICENSE).
 
 ## Contributors
 
-- [Mohit Soni](https://github.com/mohitsoni2111)
-- [Akshat Savla](https://github.com/akshat22)
-- [Madiha](https://github.com/madiha2001)
-- [Tilak Satra](https://github.com/tilaksatra)
-- [Anagha patil]()
+<a href="https://github.com/akshat22/SE_HW2345/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=akshat22/SE_HW2345" />
+</a>
