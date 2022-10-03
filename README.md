@@ -4,7 +4,7 @@
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
 <a href="https://https://github.com/akshat22/SE_HW2345/graphs/contributors/graphs/contributors" alt="Contributors">
 <img src="https://img.shields.io/github.com/akshat22/SE_HW2345/graphs/contributors?style=plastic"/> </a>
-![Intro page](./Images/Lua-vs-Python.jpg)
+<!--> ![Intro page](./Images/Lua-vs-Python.jpg)<-->
 
 Python code for creating summaries of input CSV file by translating a lua code to python.
 
