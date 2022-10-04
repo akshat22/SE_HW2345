@@ -1,5 +1,6 @@
-from code.columns import Cols, Row
-from code.util.Util import csv_fun, push, rnd, csv_fun2
+from code.columns.Cols import *
+from code.columns.Row import *
+from code.util.Util import rnd, csvReader
 
 
 class Data:
@@ -16,30 +17,36 @@ class Data:
 
     def __init__(self, src):
         self.cols = None
-        self.rows = []
+        self.rows = {}
 
         if type(src) == str:
             # csv_fun(src, lambda row: self.add(row))
-            csv_fun2(src, self.add, False)
+            csvReader(src, self.add)
         else:
-            for row in enumerate(src or []):
+            for row in src.values():
                 self.add(row)
 
-    def add(self, xs):
+    def add(self, xs, row=None):
         if self.cols is None:
             self.cols = Cols(xs)
         else:
-            row = push(self.rows, Row(xs))
-            for todo in [self.cols.x, self.cols.y]:
+            row_r = Row(row)
+            self.rows[1 + len(self.rows)] = row_r
+            # row = push(self.rows, Row(xs))
+            for todo in [self.cols.x.values(), self.cols.y.values()]:
                 for col in todo:
                     col.add(row.cells[col.at])
 
-    def stats(self, places, showCols, fun):
-        showCols, fun = showCols or self.cols.y, fun or "mid"
-        t = []
-        for col in showCols:
-            v = fun(col)
-            if type(v) is float:
-                v = rnd(v, places)
-            t[col.name] = v
-        return t
+    def stats(self, fun, places=2, showCols=None, dictionary=None):
+        showCols = self.cols.x if not showCols else showCols
+        dictionary = {}
+        for key, value in showCols.items():
+            if isinstance(value, Num):
+                fun_to_call = Num.mid if fun == "mid" else Num.div
+            else:
+                fun_to_call = Sym.mid if fun == "mid" else Sym.div
+            if len(value.numList) > 0:
+                stat = fun_to_call(value)
+                stat = rnd(stat, places) if isinstance(stat, float) else stat
+                dictionary[value.name] = stat
+        return dictionary

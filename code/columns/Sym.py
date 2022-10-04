@@ -1,6 +1,10 @@
 import math
 
 
+def helper(p):
+    return p * math.log(p, 2)
+
+
 class Sym:
     """
     Default constructor that initialises:
@@ -39,15 +43,12 @@ class Sym:
                 maxOccurringItem = item
         return maxOccurringItem
 
-    def helper(self, p):
-        return p * math.log(p, 2)
-
     # Calculates Entropy for the ItemList
     def div(self):
         # print("Going to calculate Entropy for the ItemList")
         entropy = 0
         for item, frequency in self.itemList.items():
             if frequency > 0:
-                entropy = entropy-self.helper(frequency/self.countOfItems)
+                entropy = entropy - helper(frequency / self.countOfItems)
         # print("Entropy =", entropy)
         return entropy
