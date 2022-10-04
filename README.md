@@ -1,8 +1,13 @@
 # Summary Creation Tool
 
+[![DOI](https://zenodo.org/badge/532655669.svg)](https://zenodo.org/badge/latestdoi/532655669)
+[![GitHub Release](https://img.shields.io/github/release/akshat22/SE_HW2345.svg)](https://github.com/akshat22/SE_HW2345/releases)
 <a href="https://github.com/akshat22/SE_HW2345/blob/main/LICENSE.md"><img 
 alt="License" src="https://img.shields.io/github/license/akshat22/SE_HW2345"></a>
 [![GitHub contributors](https://img.shields.io/github/contributors/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345/graphs/contributors)
+[![Open Issues](https://img.shields.io/github/issues/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345)
+[![Pull Requests](https://img.shields.io/github/issues-pr/akshat22/SE_HW2345)](https://github.com/akshat22/SE_HW2345)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/akshat22/SE_HW2345.svg)](https://img.shields.io/github/repo-size/akshat22/SE_HW2345.svg)
 <!-- ![Intro page](./Images/Lua-vs-Python.jpg) -->
 
 Python code for creating summaries of input CSV file by translating a lua code to python.
