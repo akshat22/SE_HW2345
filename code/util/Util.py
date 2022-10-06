@@ -1,7 +1,7 @@
 import math
-import sys
+from code import config
 from contextlib import closing
-from pathlib import Path
+import traceback
 
 import requests
 import codecs
@@ -65,7 +65,50 @@ def csv_fun2(fileName, fun, n):
             fun(t)
 
 
+"""
+Call `csvReader` on each row. Row cells are divided in `the.seperator`.
+"""
+
+
+def csvReader(fileName, fun, sep=None, src=None, s=None, t=None):
+    sep = config.baseSettings["sep"].strip()
+    with open(fileName) as f:
+        column_names = [col.strip() for col in f.readline().split(sep)]
+        column_indices = list(range(1, len(column_names) + 1))
+        columns = dict(zip(column_indices, column_names))
+        while True:
+            dictionary = {}
+            line = f.readline()
+            for s in line.split(sep):
+                try:
+                    s = float(s)
+                except:
+                    s = None
+                dictionary[1 + len(dictionary)] = s
+            fun(xs=columns, row=dictionary)
+            if not line or len(line.strip()) == 0:
+                break
+
+
 # Maths
 def rnd(x, places):
     mult = 10 ** places
     return math.floor(x * mult + 0.5) / mult
+
+
+def standard_dev(num):
+    mean = sum(num) / len(num)
+    std = (sum([((x - mean) ** 2) for x in num]) / len(num)) ** 0.5
+    return round(std, 2)
+
+
+def dump_error(error):
+    if config.baseSettings["dump"]:
+        print("*" * 70)
+        traceback.print_exception(error)
+        print("*" * 70)
+
+
+def print_result(message, m, status):
+    print(f"\n!!!!!\t{message}\t{m}\t{status}")
+    print()

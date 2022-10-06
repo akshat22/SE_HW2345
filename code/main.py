@@ -1,6 +1,12 @@
 from code.Cli import *
-from code.LuaPythonTestEngine import runs
+from code import config
+from code import LuaPythonTestEngine
+
 
 if __name__ == '__main__':
     cliObject = Cli()
-    runs(the['eg'])
+    the = cliObject.cli(cliObject.the)
+    config.baseSettings = the
+
+    if the["eg"] != "nothing":
+        LuaPythonTestEngine.runs(the["eg"])

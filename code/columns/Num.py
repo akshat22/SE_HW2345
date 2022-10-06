@@ -1,7 +1,7 @@
 from code.util.Util import per
-from code import Cli as c
 import random
 import math
+from code.config import *
 
 
 class Num:
@@ -17,10 +17,10 @@ class Num:
     (h) w : 1 or -1
     """
 
-    def __init__(self, colName='', colPos=0):
+    def __init__(self, colName=None, colPos=None, capacity=None):
         self.countOfNums = 0
-        self.columnName = colName
-        self.columnPosition = colPos
+        self.columnName = colName if colName else ""
+        self.columnPosition = colPos if colName else 0
         self.numList = {}
         self.lowestSeen = math.inf
         self.highestSeen = -math.inf
@@ -29,6 +29,7 @@ class Num:
             self.w = -1
         else:
             self.w = 1
+        self.capacity = baseSettings["nums"] if capacity is None else capacity
 
     # Function to sort the numList
     def nums(self):
@@ -47,10 +48,10 @@ class Num:
             self.countOfNums += 1
             self.lowestSeen = min(self.lowestSeen, num)
             self.highestSeen = max(self.highestSeen, num)
-            if len(self.numList) < c.the["nums"]:
+            if len(self.numList) < baseSettings["nums"]:
                 pos = len(self.numList)
                 self.numList[pos] = num
-            elif random.random() < c.the["nums"] / self.countOfNums:
+            elif random.random() < baseSettings["nums"] / self.countOfNums:
                 pos = random.randrange(len(self.numList))
                 self.numList[pos] = num
             self.isSorted = False
