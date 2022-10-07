@@ -1,4 +1,4 @@
-from code import config
+from code.config import *
 from code.columns.Sym import Sym
 from code.columns.Num import Num
 from code.columns.Data import Data
@@ -63,7 +63,7 @@ def ALL():
             if not runs(testCase):
                 failingTestCaseCount += 1
     # print('Total Testcases Failing after executing all testcase:', failingTestCaseCount)
-    print(config.settings)
+    print(settings)
     return True, "PASS"
 
 
