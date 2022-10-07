@@ -1,63 +1,42 @@
+from code import config
 from code.columns.Sym import Sym
 from code.columns.Num import Num
 from code.columns.Data import Data
-from code import config
-from code.util import Util as uti
-from main import the
+from code.Cli import *
+from code.util.Util import dump_error
 
 eg = {}
-fails = 0
 
 
-def test_the():
-    print("*" * 50)
-    print(the)
-    return True, "PASS"
-
-
-def test_csv():
-    """Show we can read csv files."""
-    print("{", end=" ")
-    datad = Data("../data/data.csv")
-    for i, col in datad.cols.all.items():
-        print(col.name, end=" ")
-    print("}")
-    for i, row in datad.rows.items():
-        if i > 10:
-            break
-        print("{", end=" ")
-        for j, cell in row.cells.items():
-            print(cell, end=" ")
-        print("}")
-
-    return True, "PASS"
-
-
-def runs(k):
+def runs(testName):
+    if testName not in eg:
+        return False
+    old = {}
+    for t in the:
+        old[t] = the[t]
     try:
-        old_settings = config.baseSettings
-        if not eg[k]:
-            return False
-        status, message = eg[k]()
-        if k == "LIST":
+        status, message = eg[testName]()
+        if testName == "LIST":
             message = "PASS"
-        uti.print_result(message, k, status)
-        config.baseSettings = old_settings
-        """restore old settings"""
+        print("\n!!!!!", message, testName, status)
+        print(("--" * 25))
+        for t in old:
+            the[t] = old[t]
     except Exception as e:
         status = False
         message = "CRASH"
-        uti.dump_error(e)
-        uti.print_result("CRASH", k, False)
+        dump_error(e)
+        for t in old:
+            the[t] = old[t]
     return status
 
 
-def bad(self):
+def BAD():
     try:
-        print("eg doesn't have this field")
+        print(eg["something"]["that"]["doesn't"]["exist!"])
         return True, "PASS"
     except Exception as e:
-        uti.dump_error(e)
+        dump_error(e)
         return False, "CRASH"
 
 
@@ -66,24 +45,25 @@ def LIST():
     for testCaseName in eg:
         testCaseNames.append(testCaseName)
     testCaseNames.sort()
-    return testCaseNames, "PASS"
+    return True, testCaseNames
 
 
-def ls():
+def LS():
     print("\nExamples lua csv −e ...")
-    for k in LIST():
+    for k in LIST()[1]:
         print("\t" + k)
     return True, "PASS"
 
 
 def ALL():
     failingTestCaseCount = 0
-    testCasesList = LIST()
+    testCasesList = LIST()[1]
     for testCase in testCasesList:
         if testCase != "ALL":
             if not runs(testCase):
-                failingTestCaseCount = failingTestCaseCount + 1
+                failingTestCaseCount += 1
     # print('Total Testcases Failing after executing all testcase:', failingTestCaseCount)
+    print(config.settings)
     return True, "PASS"
 
 
@@ -95,9 +75,10 @@ def sym():
     mode = symbol.mid()
     entropy = symbol.div()
     entropy = 1000 * entropy // 1 / 1000
-    symDictionary = {"mid": mode, "div": entropy}
-    print("\nSym Operation Results", symDictionary)
-    return (mode == "a") and (1.37 <= entropy <= 1.38)
+    symDictionary = {"div": entropy, "mid": mode}
+    print(symDictionary)
+    status = "PASS" if mode == "a" and 1.37 <= entropy <= 1.38 else "FAIL"
+    return True, status
 
 
 def num():
@@ -107,46 +88,69 @@ def num():
     mid = numObject.mid()
     div = numObject.div()
     numDictionary = {'mid': mid, 'div': div}
-    print("\nNum Operation Results", numDictionary)
-    return (50 <= mid <= 52) and (30.5 < div < 32)
+    status = "PASS" if 50 <= mid <= 52 and 28 < div < 30 else "FAIL"
+    return True, status
 
 
-def bigNum():
-    bigNumObject = Num(capacity=32)
+def test_bigNum():
+    bigNumObj = Num(capacity=32)
     # the['nums'] = 32
-    for i in range(1000):
-        bigNumObject.add(i + 1)
-    return len(bigNumObject.numList) == 32
-
-
-def data():
-    dat = Data(src='../data/data.csv')
-    for _, col in dat.cols.y.items():
-        if not isinstance(col, Num):
-            continue
-        print("{ " + f":at {col.columnPosition} :hi {col.highestSeen} :isSorted {col.isSorted} :lo {col.lowestSeen}"
-                     f" :n {col.countOfNums} :name {col.columnName} :w {col.w}" + " }")
+    for i in range(1, 1001):
+        bigNumObj.add(i)
+    status = "PASS" if len(bigNumObj.numList) == 32 else "FAIL"
+    print(bigNumObj.nums())
     return True
 
 
-def stats(self):
-    dat = Data(src='../data/data.csv')
+def csv():
+    print("{", end=" ")
+    d = Data("../data/data.csv")
+    for i, col in d.cols.all.items():
+        print(col.name, end=" ")
+    print("}")
+    for i, row in d.rows.items():
+        if i > 10:
+            break
+        print("{", end=" ")
+        for j, cell in row.cells.items():
+            print(cell, end=" ")
+        print("}")
+    return True, "PASS"
+
+
+def data():
+    dat = Data("../data/data.csv")
+    for _, col in dat.cols.y.items():
+        if not isinstance(col, Num):
+            continue
+        print("{ "
+              f":at {col.columnPosition} :hi {col.highestSeen} :isSorted {col.isSorted} :lo {col.lowestSeen} "
+              f":n {col.countOfNums} :name {col.columnName} :w {col.w} "" }")
+    return True, "PASS"
+
+
+def stats():
+    dat = Data("../data/data.csv")
     print()
     print("xmid", dat.stats(fun="mid", places=2, showCols=dat.cols.x))
     print("xdiv", dat.stats(fun="div", places=3, showCols=dat.cols.x))
     print("ymid", dat.stats(fun="mid", places=2, showCols=dat.cols.y))
     print("ydiv", dat.stats(fun="div", places=3, showCols=dat.cols.y))
-    return True
+    return True, "PASS"
 
 
-eg["BAD"] = bad
-eg["ALL"] = all
-eg["LIST"] = list
-eg["LS"] = ls
-eg["bignum"] = bigNum
-eg["csv"] = test_csv
-eg["data"] = data
+def test_the():
+    return True, "PASS"
+
+
+eg["BAD"] = BAD             # Done
+eg["LIST"] = LIST           # Done
+eg["LS"] = LS               # Done
+eg["sym"] = sym             # Done
 eg["num"] = num
+eg["bignum"] = test_bigNum
+eg["ALL"] = ALL             # Done
+eg["csv"] = csv
+eg["data"] = data
 eg["stats"] = stats
-eg["the"] = test_the
-eg["sym"] = sym
+eg["the"] = test_the        # Done

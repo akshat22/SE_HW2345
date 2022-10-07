@@ -1,12 +1,12 @@
-# from util.Util import copy
 import copy
 
 
 class Row:
-    def __init__(self, t):
-        self.cells = t
+    """
+    `Row` holds one record
+    """
 
-        # Here, we have to replace copy.deepcopy with our own function 'copy' which is defined in Util.py
-        cooked = copy.deepcopy(t)
-
-        isEvaled = False
+    def __init__(self, row):
+        self.cells = row
+        self.cooked = copy.deepcopy(row)
+        self.isEvaled = False
