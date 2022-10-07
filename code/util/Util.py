@@ -1,7 +1,7 @@
 import math
 import traceback
 
-from code import config
+from code.config import *
 
 
 def calculateLogProbability(itemFrequency, totalCount):
@@ -30,14 +30,14 @@ def coerce(value):
 
 
 def dump_error(e):
-    if config.settings["dump"]:
+    if settings["dump"]:
         print("*" * 80)
         traceback.print_exception(e)
         print("*" * 80)
 
 
 def csv(fname, fun, sep=None, src=None, s=None, t=None):
-    sep = config.settings["sep"].strip()
+    sep = settings["sep"].strip()
     with open(fname) as f:
         column_names = [c.strip() for c in f.readline().split(sep)]
         column_indices = list(range(1, len(column_names) + 1))
