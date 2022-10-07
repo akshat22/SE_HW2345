@@ -4,6 +4,7 @@ from code.columns.Num import Num
 from code.columns.Data import Data
 from code.Cli import *
 from code.util.Util import dump_error
+import os
 
 eg = {}
 

@@ -1,5 +1,5 @@
-from code.Cli import *
-from code.LuaPythonTestEngine import runs
+from Cli import *
+from LuaPythonTestEngine import runs
 
 if __name__ == '__main__':
     cliObject = Cli()
