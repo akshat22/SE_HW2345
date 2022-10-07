@@ -1,5 +1,8 @@
 import math
-import sys
+import traceback
+
+from code import config
+
 
 def calculateLogProbability(itemFrequency, totalCount):
     probability = (itemFrequency / totalCount)
@@ -19,33 +22,44 @@ def coerce(value):
         if valueToParse == "false":
             return False
         return valueToParse
+
     try:
         return int(value)
     except:
         return fun(value)
 
-def cli(dictionary):
-    for slot in dictionary:
-        v = dictionary[slot]
-        v = str(v)
-        n = 0
-        for x in sys.argv:
-            if n == 0:
-                n += 1
-                continue
-            if x == "-" + slot[0] or x == "--" + slot:
-                if v == "False":
-                    v = "true"
-                    dictionary[slot] = self.coerce(v)
-                    continue
-                if v == "True":
-                    v = "false"
-                    dictionary[slot] = self.coerce(v)
-                    continue
-                else:
-                    v = sys.argv[n + 1]
-            dictionary[slot] = self.coerce(v)
-            n += 1
-    if dictionary["help"]:
-        exit(self.help)
-    return dictionary
+
+def dump_error(e):
+    if config.settings["dump"]:
+        print("*" * 80)
+        traceback.print_exception(e)
+        print("*" * 80)
+
+
+def csv(fname, fun, sep=None, src=None, s=None, t=None):
+    sep = config.settings["sep"].strip()
+    with open(fname) as f:
+        column_names = [c.strip() for c in f.readline().split(sep)]
+        column_indices = list(range(1, len(column_names) + 1))
+        columns = dict(zip(column_indices, column_names))
+        while True:
+            t = {}
+            line = f.readline()
+            for s in line.split(sep):
+                try:
+                    s = float(s)
+                except:
+                    s = None
+                t[1 + len(t)] = s
+            fun(xs=columns, row=t)
+            if not line or len(line.strip()) == 0:
+                break
+
+
+def rnd(x, places):
+    if places:
+        mult = pow(10, places)
+    else:
+        mult = pow(10, 2)
+
+    return math.floor(x * mult + 0.5) / mult

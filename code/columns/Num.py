@@ -1,12 +1,13 @@
 import re
 
+from code.Cli import the
 from code.util.Util import per
 from code.config import *
 import random
 import math
 
-class Num:
 
+class Num:
     """
     Default constructor that initialises:
     (a) countOfItems(n): To keep track of count of items inserted
@@ -17,9 +18,10 @@ class Num:
     (f) highestSeen(hi): The highest seen number in the dictionary
     (g) isSorted: Is the data sorted or not
     (h) w : Not sure Yet
+    (i) capacity = settings["nums"] if capacity == None else capacity
     """
 
-    def __init__(self, colName='', colPos=0):
+    def __init__(self, colName='', colPos=0, capacity=None):
         self.countOfNums = 0
         self.columnName = colName
         self.columnPosition = colPos
@@ -28,6 +30,7 @@ class Num:
         self.highestSeen = -math.inf
         self.isSorted = True  # no updates since last sort of data
         self.w = -1 if re.search('-$', self.columnName) else 1
+        self.capacity = settings["nums"] if capacity == None else capacity
 
     # Function to sort the numList
     def nums(self):
@@ -47,7 +50,7 @@ class Num:
         if len(self.numList) < the["nums"]:
             self.numList[num] = numCount + 1
         else:
-            pos = random.randint(0, len(self.numList)-1)
+            pos = random.randint(0, len(self.numList) - 1)
             self.numList[pos] = num
         self.isSorted = False
         # print("Modified Num List:", self.numList, "with total nums =", self.countOfNums)

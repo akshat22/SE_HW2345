@@ -1,39 +1,43 @@
+from code import config
 from code.columns.Sym import Sym
 from code.columns.Num import Num
+from code.columns.Data import Data
 from code.Cli import *
+from code.util.Util import dump_error
 
 eg = {}
 
 
 def runs(testName):
     if testName not in eg:
-        return
+        return False
     old = {}
     for t in the:
         old[t] = the[t]
     try:
-        status = eg[testName]()
-        if status==True:
+        status, message = eg[testName]()
+        if testName == "LIST":
             message = "PASS"
-        elif status is None:
-            message = "CRASH"
-            status = False
-        else:
-            status = True
-            message = "FAIL"
-    except:
+        print("\n!!!!!", message, testName, status)
+        print(("--" * 25))
+        for t in old:
+            the[t] = old[t]
+    except Exception as e:
         status = False
         message = "CRASH"
-    for t in old:
-        the[t] = old[t]
-    print("\n!!!!!", message, testName, status)
-    print(("--" * 25))
+        dump_error(e)
+        for t in old:
+            the[t] = old[t]
     return status
 
 
 def BAD():
-    print("eg doesn't have this field")
-    return
+    try:
+        print(eg["something"]["that"]["doesn't"]["exist!"])
+        return True, "PASS"
+    except Exception as e:
+        dump_error(e)
+        return False, "CRASH"
 
 
 def LIST():
@@ -41,24 +45,27 @@ def LIST():
     for testCaseName in eg:
         testCaseNames.append(testCaseName)
     testCaseNames.sort()
-    return testCaseNames
+    return True, testCaseNames
 
 
 def LS():
     print("\nExamples lua csv −e ...")
-    for k in LIST():
+    for k in LIST()[1]:
         print("\t" + k)
-    return True
+    return True, "PASS"
+
 
 def ALL():
     failingTestCaseCount = 0
-    testCasesList = LIST()
+    testCasesList = LIST()[1]
     for testCase in testCasesList:
         if testCase != "ALL":
             if not runs(testCase):
-                failingTestCaseCount = failingTestCaseCount + 1
+                failingTestCaseCount += 1
     # print('Total Testcases Failing after executing all testcase:', failingTestCaseCount)
-    return True
+    print(config.settings)
+    return True, "PASS"
+
 
 def sym():
     symbol = Sym()
@@ -67,35 +74,83 @@ def sym():
         symbol.add(x)
     mode = symbol.mid()
     entropy = symbol.div()
-    # entropy = 1000 * entropy // 1 / 1000
-    symDictionary = {"mid": mode, "div": entropy}
-    print("\nSym Operation Results", symDictionary)
-    # oo()
-    return (mode == "a") and (1.37 <= entropy and entropy <= 1.38)
+    entropy = 1000 * entropy // 1 / 1000
+    symDictionary = {"div": entropy, "mid": mode}
+    print(symDictionary)
+    status = "PASS" if mode == "a" and 1.37 <= entropy <= 1.38 else "FAIL"
+    return True, status
 
 
 def num():
-    numObject = Num()
+    numObject = Num(capacity=100)
     for i in range(1, 101):
         numObject.add(i)
     mid = numObject.mid()
     div = numObject.div()
     numDictionary = {'mid': mid, 'div': div}
-    print("\nNum Operation Results", numDictionary)
-    return (50 <= mid and mid <= 52) and (30.5 < div and div < 32)
+    status = "PASS" if 50 <= mid <= 52 and 28 < div < 30 else "FAIL"
+    return True, status
 
 
-def bignum():
-    bignum = Num()
-    the['nums'] = 32
-    for i in range(1000):
-        bignum.add(i + 1)
-    return len(num._has) == 32
+def test_bigNum():
+    bigNumObj = Num(capacity=32)
+    # the['nums'] = 32
+    for i in range(1, 1001):
+        bigNumObj.add(i)
+    status = "PASS" if len(bigNumObj.numList) == 32 else "FAIL"
+    print(bigNumObj.nums())
+    return True
 
-eg["BAD"]=BAD
-eg["LIST"]=LIST
-eg["LS"]=LS
-eg["sym"] = sym
+
+def csv():
+    print("{", end=" ")
+    d = Data("../data/data.csv")
+    for i, col in d.cols.all.items():
+        print(col.name, end=" ")
+    print("}")
+    for i, row in d.rows.items():
+        if i > 10:
+            break
+        print("{", end=" ")
+        for j, cell in row.cells.items():
+            print(cell, end=" ")
+        print("}")
+    return True, "PASS"
+
+
+def data():
+    dat = Data("../data/data.csv")
+    for _, col in dat.cols.y.items():
+        if not isinstance(col, Num):
+            continue
+        print("{ "
+              f":at {col.columnPosition} :hi {col.highestSeen} :isSorted {col.isSorted} :lo {col.lowestSeen} "
+              f":n {col.countOfNums} :name {col.columnName} :w {col.w} "" }")
+    return True, "PASS"
+
+
+def stats():
+    dat = Data("../data/data.csv")
+    print()
+    print("xmid", dat.stats(fun="mid", places=2, showCols=dat.cols.x))
+    print("xdiv", dat.stats(fun="div", places=3, showCols=dat.cols.x))
+    print("ymid", dat.stats(fun="mid", places=2, showCols=dat.cols.y))
+    print("ydiv", dat.stats(fun="div", places=3, showCols=dat.cols.y))
+    return True, "PASS"
+
+
+def test_the():
+    return True, "PASS"
+
+
+eg["BAD"] = BAD             # Done
+eg["LIST"] = LIST           # Done
+eg["LS"] = LS               # Done
+eg["sym"] = sym             # Done
 eg["num"] = num
-eg["bignum"] = bignum
-eg["ALL"] = ALL
+eg["bignum"] = test_bigNum
+eg["ALL"] = ALL             # Done
+eg["csv"] = csv
+eg["data"] = data
+eg["stats"] = stats
+eg["the"] = test_the        # Done
