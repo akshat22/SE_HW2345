@@ -1,9 +1,9 @@
 from config import *
-from columns.Sym import Sym
-from columns.Num import Num
-from columns.Data import Data
+from Sym import Sym
+from Num import Num
+from Data import Data
 from Cli import *
-from util.Util import dump_error
+from Util import dump_error
 import os
 
 eg = {}

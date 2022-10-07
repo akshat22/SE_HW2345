@@ -1,7 +1,7 @@
 import re
 import sys
 
-from util.Util import coerce
+from Util import coerce
 
 """
 Update settings from values on command−line flags. Booleans need no values
